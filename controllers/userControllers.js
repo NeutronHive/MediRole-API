@@ -18,11 +18,13 @@ const updateStatus = async(req,res) => {
 const getRole = async(req,res) => {
     const user = await User.find({});
     let finalUser = "";
+    let finalRole = "";
     user.map(singleUser => {
         if(singleUser.isOnline == 'true'){
             finalUser = singleUser.username;
+            finalRole = singleUser.role
         }
     })
-    res.status(200).json({finalUser});
+    res.status(200).json({finalUser,finalRole});
 }
 module.exports = {updateStatus,getRole};
